@@ -23,7 +23,7 @@ export class GenerateVideoComponent implements OnInit {
   public sourceVideo: string = '';
   public selectedMusic: string = '';
   public videoUrl: string | undefined;
-  public customeText: string | undefined;
+  public customText: string | undefined;
   public videoQuality: string = '';
   public musicOptions = [];
   public fontOptions= [];
@@ -63,7 +63,7 @@ export class GenerateVideoComponent implements OnInit {
     const payload = {
       topic: this.topic,
       font: this.selectedFont,
-      customeText: this.customeText,
+      customeText: this.customText,
       ytLink: this.sourceVideo,
       music: this.selectedMusic,
     }
