@@ -7,8 +7,13 @@
       </div>
 
       <div class="form-group">
+        <label for="customeText">Custome Text:</label>
+        <input type="text" id="customeText" name="customeText" [(ngModel)]="customeText" placeholder="Enter custome text">
+      </div>
+
+      <div class="form-group">
         <label for="fonts">Fonts:</label>
-        <p-dropdown id="fonts" name="fonts" [options]="fontOptions" [(ngModel)]="selectedFont" optionLabel="label" placeholder="Select a font"></p-dropdown>
+        <p-dropdown id="fonts" name="fonts" [options]="fontOptions" [(ngModel)]="selectedFont" optionLabel="label" optionValue="value" placeholder="Select a font"></p-dropdown>
       </div>
 
       <div class="form-group">
@@ -16,7 +21,31 @@
         <input type="text" id="sourceVideo" name="sourceVideo" [(ngModel)]="sourceVideo" placeholder="Enter video source">
       </div>
 
-      <button type="submit">Generate</button>
+      <div class="form-group">
+        <label for="selectedMusic">Music:</label>
+        <p-dropdown id="selectedMusic" name="selectedMusic" [options]="musicOptions" [(ngModel)]="selectedMusic" optionLabel="label" optionValue="value" placeholder="Select a music"></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="videoQuality">Music:</label>
+        <p-dropdown id="videoQuality" name="videoQuality" [options]="videoQuatityOptions" [(ngModel)]="videoQuality" optionLabel="label" optionValue="value" placeholder="Select video quality"></p-dropdown>
+      </div>
+
+      <button type="submit" (click)="generateVideo()" [disabled]="videoGeneringInProgress$ | async">Generate</button>
     </form>
   </div>
+
+
+  <div *ngIf="videoUrl; else loader" class="video-container">
+    <video controls autoplay>
+      <source [src]="videoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <ng-template #loader>
+    <div *ngIf="videoGeneringInProgress$ | async" class="loader">
+      <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+    </div>
+  </ng-template>
 </div>

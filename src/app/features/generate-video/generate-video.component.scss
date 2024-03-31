@@ -1,7 +1,8 @@
 /* Custom styles for the form component */
 .page-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 15%;
   align-items: center;
   height: 100vh;
   background-image: linear-gradient(to bottom right, #f0f0f0, #dddddd);
@@ -80,4 +81,23 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.video-container {
+  text-align: center;
+  margin-left: 10px;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.loader {
+  margin-left: 10px;
 }
