@@ -1,0 +1,33 @@
+<div class="page">
+  <div class="form">
+    <div>
+      <h2>Upload Video</h2>
+      <input type="file" accept="video/*" (change)="onVideoSelected($event)">
+    </div>
+
+    <div>
+      <h2>Add Text Overlay</h2>
+      <input type="text" #textInput (input)="onTextInputChange()" placeholder="Enter text...">
+
+      <h2>Add font color</h2>
+      <ngx-colors ngx-colors-trigger [(ngModel)]="fontColorOverlay" (input)="onFontColorChange()"></ngx-colors>
+
+      <h2>Add text backgroud color</h2>
+      <ngx-colors ngx-colors-trigger [(ngModel)]="backgroundColorOverlay" (input)="onBackgroundColorChange()"></ngx-colors>
+
+      <h2>Add text placement color</h2>
+      <p-dropdown [options]="textPlacementOptions" [(ngModel)]="textPlacement" optionLabel="label" optionValue="value" placeholder="Select text placement" (onChange)="onTextPlacementChange()">
+      </p-dropdown>
+
+    </div>
+
+    <button type="submit" (click)="createVideo()">Create you video</button>
+  </div>
+
+  <div *ngIf="videoUrl" class="preview">
+    <h2>Video Preview</h2>
+    <video [ngClass]="previewImage ? 'd-none' : ''"  #videoPlayer controls [src]="videoUrl"></video>
+    <img *ngIf="previewImage" [src]="previewImage" alt="Video Preview">
+  </div>
+</div>
+

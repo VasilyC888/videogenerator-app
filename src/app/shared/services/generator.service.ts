@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 
 @Injectable({
@@ -10,14 +10,22 @@ export class GeneratorService {
   constructor(private readonly http: HttpClient) {}
 
   public generateVideo(data: any): Observable<any> {
-    return this.http.post(`http://localhost:3030/gum/new`, data);
+    const authToken = 'ZFKrGXa9quayeIFsfxLd924SE3hEd1';
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    const options = { headers: headers };
+
+    return this.http.post(`https://gum-generator.onrender.com/gum/new`, data, options);
   }
 
   public getMusicList(): Observable<any> {
-    return this.http.get(`http://localhost:3030/music/background`);
+    return this.http.get(`https://gum-generator.onrender.com/music/background`);
   }
 
   public getFontList(): Observable<any> {
-    return this.http.get(`http://localhost:3030/fonts`);
+    return this.http.get(`https://gum-generator.onrender.com/fonts`);
   }
 }

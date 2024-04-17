@@ -66,6 +66,7 @@ export class GenerateVideoComponent implements OnInit {
       customeText: this.customText,
       ytLink: this.sourceVideo,
       music: this.selectedMusic,
+      videoQuality: this.videoQuality,
     }
 
     this.generateVideoService.generateVideo(payload).subscribe((res) => {

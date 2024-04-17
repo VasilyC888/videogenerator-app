@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.section {
+  margin-bottom: 20px;
+}
+.upload-section, .customize-section, .submit-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.upload-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.video-preview {
+  margin-top: 20px;
+}
+.video-player {
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+
+.d-none {
+  display:none;
+}
+
+
+:host ::ng-deep {
+  .p-dropdown {
+    width: 95%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+
+    .p-dropdown-label {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+  }
+
+  .p-dropdown-items {
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 16px;
+    padding: 10px;
+
+    li {
+      padding: 5px;
+    }
+
+    :not(:last-child) {
+      li {
+        border-bottom: 1px solid #dddddd;
+      }
+    }
+  }
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
