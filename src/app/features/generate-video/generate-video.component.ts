@@ -41,6 +41,7 @@ export class GenerateVideoComponent implements OnInit {
       value: '1440hd',
     },
   ]
+
   public videoGeneringInProgress$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(public generateVideoService: GeneratorService) {
   }
@@ -50,9 +51,9 @@ export class GenerateVideoComponent implements OnInit {
       this.fontOptions = res;
     });
 
-    this.generateVideoService.getMusicList().subscribe((res) => {
-      this.musicOptions = res;
-    });
+    // this.generateVideoService.getMusicList().subscribe((res) => {
+    //   this.musicOptions = res;
+    // });
   }
 
   public generateVideo(): void {
