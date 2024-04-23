@@ -50,3 +50,34 @@ html, body {
 .title-button-container .button {
   margin-left: 20px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px; /* Add padding to container */
+    box-sizing: border-box; /* Ensure padding doesn't increase container size */
+  }
+
+  .content {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .title {
+    font-size: 36px; /* Reduce font size */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+    display: block; /* Set to block to take full width */
+  }
+
+  .button {
+    width: 100%; /* Make button full width */
+    padding: 15px; /* Reduce padding */
+    font-size: 20px; /* Reduce font size */
+    margin-left: 0; /* Remove left margin */
+  }
+
+  .title-button-container {
+    flex-direction: column; /* Stack title and button vertically */
+    align-items: center; /* Center align */
+  }
+}

@@ -27,6 +27,10 @@
           </div>
         </div>
 
+        <h2 class="section-title">Font size</h2>
+        <p-dropdown [options]="fontSizeOptions" [(ngModel)]="fontSize" optionLabel="label" optionValue="value" placeholder="Select font size" (onChange)="generatePreviewImage()" class="dropdown"></p-dropdown>
+
+
         <h2 class="section-title">Text Placement</h2>
         <p-dropdown [options]="textPlacementOptions" [(ngModel)]="textPlacement" optionLabel="label" optionValue="value" placeholder="Select text placement" (onChange)="generatePreviewImage()" class="dropdown"></p-dropdown>
 

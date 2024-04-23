@@ -30,6 +30,7 @@ export class CaptionsAddComponent {
   previewImage: string = '';
   textPlacement: string = '';
   fontFamily: string = 'Arial';
+  fontSize: string = '';
 
   videoGeneringInProgress$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -43,6 +44,29 @@ export class CaptionsAddComponent {
     {
       label: 'Center',
       value: 'center',
+    },
+  ]
+
+  public fontSizeOptions = [
+    {
+      label: '10 px',
+      value: '10',
+    },
+    {
+      label: '12 px',
+      value: '12',
+    },
+    {
+      label: '14 px',
+      value: '14',
+    },
+    {
+      label: '16 px',
+      value: '16',
+    },
+    {
+      label: '30 px',
+      value: '30',
     },
   ]
 
@@ -84,7 +108,7 @@ export class CaptionsAddComponent {
 
     // Draw video onto canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    ctx.font = `30px ${this.fontFamily}`;
+    ctx.font = `${this.fontSize}px ${this.fontFamily}`;
 
     const textWidth = ctx.measureText(this.textOverlay).width;
 
@@ -103,7 +127,7 @@ export class CaptionsAddComponent {
     // Set background color
     ctx.fillStyle = this.backgroundColorOverlay;
     // Draw background rectangle
-    ctx.fillRect(textX - 10, textY - 30, textWidth + 20, 40);
+    ctx.fillRect(textX - 10, textY - +this.fontSize * 0.8, textWidth + 20, +this.fontSize * 1.2);
     // Set font color
     ctx.fillStyle = this.fontColorOverlay;
     // Draw text
@@ -114,9 +138,16 @@ export class CaptionsAddComponent {
   }
 
   createVideo(): void {
+    const videoSettings = {
+      color: this.fontColorOverlay,
+      fontSize: this.fontSize,
+      fontName: this.fontFamily,
+      alignment: this.textPlacement,
+      textSegmentation: 'segment',
+    }
     this.videoGeneringInProgress$.next(true);
 
-    this.generatorService.uploadVideoWithSubtitles(this.file).subscribe((video) => {
+    this.generatorService.uploadVideoWithSubtitles(this.file, videoSettings).subscribe((video) => {
       if (video) {
         this.videoWithCaptions = video.downloadLink
 

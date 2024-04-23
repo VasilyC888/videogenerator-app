@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {log} from "node:util";
 
@@ -30,11 +30,21 @@ export class GeneratorService {
     return this.http.get(`https://gum-generator.onrender.com/fonts`);
   }
 
-  public uploadVideoWithSubtitles(videoFile: File): Observable<any> {
+  public uploadVideoWithSubtitles(videoFile: File, videoSettings: any): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', videoFile);
 
-    return this.http.post<any>('https://gum-generator.onrender.com/video/add/subtitles', formData, {
+    const params = new HttpParams()
+      .set('color', videoSettings.color)
+      .set('fontSize', videoSettings.fontSize)
+      .set('fontName', videoSettings.fontName)
+      .set('alignment', videoSettings.alignment)
+      .set('textSegmentation', videoSettings.textSegmentation);
+
+    const apiUrl = 'https://gum-generator.onrender.com/video/add/subtitles';
+    const urlWithParams = `${apiUrl}?${params.toString()}`;
+
+    return this.http.post<any>(urlWithParams, formData, {
       headers: {
         Authorization: 'ZFKrGXa9quayeIFsfxLd924SE3hEd1'
       }

@@ -182,3 +182,47 @@ input[type="file"] {
   cursor: pointer;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .page {
+    height: 65%;
+  }
+
+  .section {
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  :host ::ng-deep {
+    .p-dropdown {
+      width: 75%;
+      font-size: 13px;
+      padding-left: 0;
+      padding-right: 0;
+
+      .p-dropdown-label {
+        font-size: 13px;
+      }
+    }
+
+    .p-dropdown-items {
+      font-size: 13px;
+    }
+  }
+
+  .image-preview {
+    width: 100%;
+    height: 80%;
+    margin-top: 40px;
+  }
+
+  .dropdown {
+    padding: 5px;
+    margin-bottom: 7px;
+  }
+}
