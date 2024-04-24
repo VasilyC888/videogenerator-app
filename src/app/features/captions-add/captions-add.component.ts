@@ -70,7 +70,7 @@ export class CaptionsAddComponent {
     },
   ]
 
-  fontList = [ {label:'Roboto', value: 'Roboto'}, {label: 'Platypi', value: 'Platypi'}, {label: 'Jersey 10', value: 'Jersey 10'}, {label: 'Anton', value: 'Jersey 10'}];
+  fontList = [ {label:'Cherry Cream Soda', value: 'Cherry Cream Soda Regular'}, {label: 'Press Start 2P', value: 'Press Start 2P'}, {label: 'Nunito', value: 'Nunito'}];
 
   constructor(public generatorService: GeneratorService) { }
 
